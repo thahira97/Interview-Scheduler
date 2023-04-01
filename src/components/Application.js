@@ -12,6 +12,7 @@ export default function Application(props) {
     days: [],
     appointments: [],
   });
+  
 
   useEffect(() => {
     Promise.all([
@@ -30,10 +31,10 @@ export default function Application(props) {
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const setDay = (day) => setState({ ...state, day });
 
-  dailyAppointments.map((appointment) => {
+  const appointmentsArray = dailyAppointments.map((appointment) => {
     return <Appointment key={appointment.id} {...appointment} />;
   });
-  dailyAppointments.push(<Appointment key="last" time="5pm" />);
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -52,7 +53,10 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{dailyAppointments}</section>
+      <section className="schedule">
+        {appointmentsArray}
+      <Appointment key="last" time="5pm" />
+      </section>
     </main>
   );
 }
