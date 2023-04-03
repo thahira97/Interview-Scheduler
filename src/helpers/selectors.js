@@ -25,3 +25,19 @@ else {
   }
 }
 }
+
+export function getInterviewersForDay (state, day){
+  const interviewerArr = state.days.filter(dayItem => dayItem.name === day);
+
+  if (interviewerArr.length === 0) {
+    return [];
+  }
+
+  const interviewerIds = interviewerArr[0].interviewers;
+
+  const interviewers = interviewerIds.map(
+    interviewerId => state.interviewers[`${interviewerId}`]
+  );
+
+  return interviewers;
+}
