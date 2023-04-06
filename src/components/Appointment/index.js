@@ -34,8 +34,10 @@ export default function Appointment(props) {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
+          id={props.id}
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={props.cancelInterview}
         />
       )}
       {mode === CREATE && (
@@ -48,9 +50,7 @@ export default function Appointment(props) {
           onSave={save}
         />
       )}
-      { mode === SAVING && (
-        <Status message={"Saving the interview..."}/>
-      )}
+      {mode === SAVING && <Status message={"Saving"} />}
     </article>
   );
 }

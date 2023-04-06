@@ -33,6 +33,8 @@ export default function Application(props) {
     });
   }, []);
 
+  ///Function to book an interview
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -54,6 +56,30 @@ export default function Application(props) {
         });
       });
   }
+  
+  ///Function to delete an interview
+  function cancelInterview (id){
+    console.log("99984598734553846583", id)
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+  
+    return axios
+    .delete(`http://localhost:8001/api/appointments/${id}`)
+    .then((response) => {
+      console.log(response.data)
+      setState({
+        ...state,
+        appointments,
+      });
+    });
+  }
 
   const setDay = (day) => setState({ ...state, day });
 
@@ -70,6 +96,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
