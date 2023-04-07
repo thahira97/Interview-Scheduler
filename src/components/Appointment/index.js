@@ -7,6 +7,7 @@ import useVisualMode from "hooks/useVisualMode";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -15,6 +16,8 @@ const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
 const DELETING = "DELETING";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
@@ -22,22 +25,27 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
-    transition(SAVING);
     const interview = {
       student: name,
       interviewer,
     };
+    transition(SAVING);
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch((err) => console.error(err));
+      .catch(() => transition(ERROR_SAVE, true));
   }
 
   function deleteInterview(id) {
-    transition(DELETING);
-    props.cancelInterview(id).then(() => {
-      transition(EMPTY);
-    });
+    transition(DELETING, true);
+    props
+      .cancelInterview(id)
+      .then(() => {
+        transition(EMPTY);
+      })
+      .catch(() => {
+        transition(ERROR_DELETE, true);
+      });
   }
   return (
     <article className="appointment">
@@ -53,7 +61,7 @@ export default function Appointment(props) {
             transition(CONFIRM);
           }}
           onEdit={() => {
-            transition( EDIT );
+            transition(EDIT);
           }}
         />
       )}
@@ -66,6 +74,11 @@ export default function Appointment(props) {
         />
       )}
       {mode === DELETING && <Status message={"Deleting"} />}
+      {mode === ERROR_DELETE && (
+        <Error 
+          message={"Could not delete appointment"}
+          onClose={()=>transition(SHOW)} />
+      )}
       {mode === CREATE && (
         <Form
           interviewers={props.interviewers}
@@ -89,6 +102,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === SAVING && <Status message={"Saving"} />}
+      {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={()=>back(EMPTY)}/>}
     </article>
   );
 }
