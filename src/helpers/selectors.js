@@ -8,7 +8,7 @@ export function getAppointmentsForDay(state, day) {
   const appointmentIds = appointmentArr[0].appointments;
 
   const appointments = appointmentIds.map(
-    appointmentId => state.appointments[`${appointmentId}`]
+    appointmentId => state.appointments[appointmentId]
   );
 
   return appointments;
@@ -36,7 +36,7 @@ export function getInterviewersForDay (state, day){
   const interviewerIds = interviewerArr[0].interviewers;
 
   const interviewers = interviewerIds.map(
-    interviewerId => state.interviewers[`${interviewerId}`]
+    interviewerId => state.interviewers[interviewerId]
   );
 
   return interviewers;
