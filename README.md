@@ -17,6 +17,9 @@ Since the server request may take some time, it's important for users to know th
 ## Editing an Interview
 With the editing feature, users can easily make changes to their appointments, providing them with greater flexibility and control over their interview schedule. Once the changes are saved, the updated details are automatically sent to the server, ensuring the appointment records are always up-to-date.
 
+!["Gif of Editing an interview"](docs/Edit%20Interview.gif)
+
+## 
 ## Setup
 
 Install dependencies with `npm install`.
