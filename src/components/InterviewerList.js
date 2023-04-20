@@ -21,8 +21,8 @@ function InterviewerList(props) {
     </section>
   );
 }
- InterviewerList.propTypes = {
-    interviewers: PropTypes.array.isRequired,
-  };
+InterviewerList.propTypes = {
+  interviewers: PropTypes.array.isRequired,
+};
 
-  export default InterviewerList;
+export default InterviewerList;
