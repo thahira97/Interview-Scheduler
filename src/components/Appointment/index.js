@@ -75,9 +75,10 @@ export default function Appointment(props) {
       )}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === ERROR_DELETE && (
-        <Error 
+        <Error
           message={"Could not delete appointment"}
-          onClose={()=>transition(SHOW)} />
+          onClose={() => transition(SHOW)}
+        />
       )}
       {mode === CREATE && (
         <Form
@@ -102,7 +103,12 @@ export default function Appointment(props) {
         />
       )}
       {mode === SAVING && <Status message={"Saving"} />}
-      {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={()=>back(EMPTY)}/>}
+      {mode === ERROR_SAVE && (
+        <Error
+          message={"Could not save appointment"}
+          onClose={() => back(EMPTY)}
+        />
+      )}
     </article>
   );
 }
