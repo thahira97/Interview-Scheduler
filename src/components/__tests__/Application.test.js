@@ -4,13 +4,8 @@ import axios from "axios";
 
 import {
   render,
-  cleanup,
-  getByTestId,
-  getByDisplayValue,
-  getAllByDisplayValue,
+  cleanup
 } from "@testing-library/react";
-
-import { prettyDOM } from "@testing-library/react";
 
 import { fireEvent } from "@testing-library/react";
 
