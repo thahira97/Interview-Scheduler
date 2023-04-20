@@ -50,3 +50,9 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+
+- React
+- Axios
+- classnames
+- normalize
