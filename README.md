@@ -27,6 +27,7 @@ This confirmation ensures that the user can confidently manage their scheduled i
 
 ## Error Handling
 If any errors occur while the server is processing the request, a user-friendly error message is displayed, alerting the user of the issue. The message can be easily dismissed by clicking on the 'Close' button provided.
+![SS of Error message](docs/Error%20msg.png)
 
 ## Setup
 
