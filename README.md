@@ -13,6 +13,10 @@ Users of the Interview Scheduler app can create appointments by entering a stude
 Since the server request may take some time, it's important for users to know that their action is being processed. Once the server response is received, the status indicator disappears, and the updated appointment details are displayed.
 
 !["Gif of booking an interview"](docs/Booking%20Interview.gif)
+
+## Editing an Interview
+With the editing feature, users can easily make changes to their appointments, providing them with greater flexibility and control over their interview schedule. Once the changes are saved, the updated details are automatically sent to the server, ensuring the appointment records are always up-to-date.
+
 ## Setup
 
 Install dependencies with `npm install`.
