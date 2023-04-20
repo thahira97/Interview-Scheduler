@@ -21,7 +21,10 @@ With the editing feature, users can easily make changes to their appointments, p
 
 ## Deleting Interview
 In case a scheduled interview is no longer required, Interview Scheduler allows users to delete it. However, before proceeding with this destructive action, the app prompts the user to confirm their decision, ensuring that no appointments are accidentally deleted.
-This confirmation and error handling system ensures that the user can confidently manage their scheduled interviews without any fear of accidentally deleting an appointment or missing critical information related to their appointments.
+This confirmation ensures that the user can confidently manage their scheduled interviews without any fear of accidentally deleting an appointment or missing critical information related to their appointments.
+
+!["Gif of Deleting an interview"](docs/Delete%20Interview.gif)
+
 ## Setup
 
 Install dependencies with `npm install`.
